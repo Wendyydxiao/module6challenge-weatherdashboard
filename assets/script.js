@@ -22,7 +22,7 @@ function capitalizeCityName(city) {
     return city.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
 }
 
-// Fetch the coordinates of the city
+// Fetch the coordinates of the city and error handling
 function getCoordinates(city) {
     const apiKey = '666b14553d4fbb8e2e7c84bebf46c442';
     const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
