@@ -1,3 +1,4 @@
+// Search for a city and display the current weather and 5-day forecast
 document.getElementById('searchButton').addEventListener('click', () => {
     const cityInput = document.getElementById('cityInput').value;
     const city = capitalizeCityName(cityInput);
@@ -6,6 +7,7 @@ document.getElementById('searchButton').addEventListener('click', () => {
     }
 });
 
+// Add event listener for cities searched
 document.addEventListener('DOMContentLoaded', () => {
     const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
     updateSearchHistory(searchHistory);
@@ -15,10 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Capitalize the first letter of each word in the city name
 function capitalizeCityName(city) {
     return city.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
 }
 
+// Fetch the coordinates of the city
 function getCoordinates(city) {
     const apiKey = '666b14553d4fbb8e2e7c84bebf46c442';
     const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
@@ -37,6 +41,7 @@ function getCoordinates(city) {
         .catch(error => console.error('Error fetching coordinates:', error));
 }
 
+// Fetch the weather data for the city
 function getWeather(city, lat, lon) {
     const apiKey = '666b14553d4fbb8e2e7c84bebf46c442';
     const weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
@@ -50,6 +55,7 @@ function getWeather(city, lat, lon) {
         .catch(error => console.error('Error fetching weather data:', error));
 }
 
+// Display the current weather for the city
 function displayCurrentWeather(city, data) {
     const currentWeather = document.getElementById('currentWeather');
     const date = new Date(data.dt * 1000).toLocaleDateString();
@@ -67,6 +73,8 @@ function displayCurrentWeather(city, data) {
         <p>Humidity: ${humidity} %</p>
     `;
 }
+
+// Display the 5-day forecast for the city
 
 function displayForecast(data) {
     const forecastContainer = document.getElementById('forecast');
@@ -95,6 +103,8 @@ function displayForecast(data) {
         forecastContainer.appendChild(weatherCard);
     });
 }
+
+// Save & update the search history to local storage
 
 function saveCityToHistory(city) {
     let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
