@@ -1,7 +1,7 @@
-# 03 JavaScript: Employee Payroll Tracker
+# 06 Serverside APIs: Weather Dashboard
 - The goal of the project is to build a use server side API to build a weather dashboard. It should enable use to retrive weather forcaste by searching specific city. This is the 6th module challenge for the bootcamp student to demonstrate server side API knowledge.
 - This page contains HTML, CSS & JS codes
-- Live page: 
+- Live page: https://wendyydxiao.github.io/module6challenge-weatherdashboard/
 - Screenshot: 
 <img src="./assets/images/weatherdashboard.png" width="350" title="page screenshot">
 
@@ -27,6 +27,7 @@ AS A traveler <br><br>
 
 
 **Acceptance Criteria**
+
 - GIVEN a weather dashboard with form inputs
 - WHEN I search for a city
 - THEN I am presented with current and future conditions for that city and that city is added to the search history
